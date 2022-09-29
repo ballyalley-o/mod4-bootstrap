@@ -1,1 +1,5 @@
 mod4LABS/
+node modules/
+*.pdf
+4_1_project_files/
+study/tasklist-dom
