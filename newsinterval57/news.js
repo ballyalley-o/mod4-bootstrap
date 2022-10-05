@@ -1,46 +1,85 @@
 const news = [
-  { id: 1, title: 'News1', content: "bla" },
-  { id: 2, title: 'News2', content: "ble" },
-  { id: 3, title: 'News3', content: "blu" }
+  { id: 1, title: "News1", content: "bla" },
+  { id: 2, title: "News2", content: "ble" },
+  { id: 3, title: "News3", content: "blu" },
 ];
 
-const newsCards = news.forEach(function(info) {
+const news2 = [
+  { id: 4, title: "News4", content: "blo" },
+  { id: 5, title: "News5", content: "blo" },
+  { id: 6, title: "News6", content: "blx" },
+];
+
+function getNews(){
+  return news;
+}
+
+function addCard() {
   
-    function addCard() {
+getNews().forEach(function templateCard(info) {
 
-      const template =
-        document.getElementById("card-template").content.cloneNode(true);
-        template.querySelector('.card-title').innerText = `${info.title}`;
-        template.querySelector('.card-text').innerText = `${info.content}`;
-        document.querySelector('#card-list').appendChild(template);
-    }
 
-  if ('content' in document.createElement('template')) {
-    addCard();  
+  const template =
+    document.getElementById("card-template").content.cloneNode(true);
+    template.querySelector(".card-id").innerText = `${info.id}`;
+    template.querySelector(".card-title").innerText = `${info.title}`;
+    template.querySelector(".card-text").innerText = `${info.content}`;
+    document.querySelector("#card-list").prepend(template);
+  });
+}
+
+if ("content" in document.createElement("template")) {
+  
+  const timer = setInterval(function () {
+    addCard();
+    clearInterval(timer);
+  }, 5000);
+}
+
+
+
+const newsCards2 = news2.forEach(function templateCard2 (info2) {
+  function addCard2() {
+
+    var template =
+    document.getElementById("card-template").content.cloneNode(true);
+    template.querySelector(".card-id").innerText = `${info2.id}`;
+    template.querySelector(".card-title").innerText = `${info2.title}`;
+    template.querySelector(".card-text").innerText = `${info2.content}`;
+    document.querySelector("#card-list").prepend(template);
+
+  }
+  if ("content" in document.createElement("template")) {
+    setTimeout(addCard2, 10000);
   }
 });
 
-function doInterval() {
-for (let i = 0; i < news.length; i++) {
-  setInterval(newsCards, 5000)
-}}
+setTimeout(function reloadCard() {
+  window.location.reload();
+}, 15000);
 
-// const newsThing = news.forEach(function(balita) {
+// const timeWatch = document.querySelector('#checkSecs');
 
-// function addCard(){
-    
-//       const template =
 
-//         document.getElementById("card-template").content.cloneNode(true);
-//         template.querySelector('.card-title').innerText = `${balita.title}`;
-//         template.querySelector('.card-text').innerText = `${balita.content}`;
-//         document.querySelector('#card-list').appendChild(template);
-//     }
-//     addCard();
+// const nd = new Date();
+// let seconds = nd.getMilliseconds();
+// let interval = null;
 
-// });
+// function getMs () {
+//   seconds++;
+
+//   let secs = seconds;
 
 
 
-//the idea is to run a for loop over the array to get out the details and use them to fill a <template>, so after running you would have 3 clones of that template, displaying the three objects in the array
-// and then use setInterval to call your function with the for loop in it, so that it clears the HTML ID and re - fills it every 5 seconds
+//   timeWatch.innerText = `${secs}`;
+
+// }
+
+// function start() {
+//   setInterval(getMs, 0);
+// }
+
+// start()
+
+
