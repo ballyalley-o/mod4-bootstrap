@@ -4,82 +4,56 @@ const news = [
   { id: 3, title: "News3", content: "blu" },
 ];
 
-const news2 = [
-  { id: 4, title: "News4", content: "blo" },
-  { id: 5, title: "News5", content: "blo" },
-  { id: 6, title: "News6", content: "blx" },
-];
-
-function getNews(){
-  return news;
+let breakingNews = 
+{
+  id: 4,
+  title: "News4",
+  content: "blo",
 }
+;
+
+news.push(breakingNews);
+
+const newsPaper =  document.querySelector('#card-list');
+
+let index = 0;
 
 function addCard() {
-  
-getNews().forEach(function templateCard(info) {
+  newsPaper.innerHTML =
+    "ID: " +
+    news[index].id +
+    "<br>" +
+    "Title: " +
+    news[index].title +
+    "<br>" +
+    "Content: " +
+    news[index].content +
+    "<br>" +
+    "<br>" +
+    "<br>";
 
-
-  const template =
-    document.getElementById("card-template").content.cloneNode(true);
-    template.querySelector(".card-id").innerText = `${info.id}`;
-    template.querySelector(".card-title").innerText = `${info.title}`;
-    template.querySelector(".card-text").innerText = `${info.content}`;
-    document.querySelector("#card-list").prepend(template);
-  });
+   
+  if (index === news.length - 1) {
+  } else {
+    index++;
+  }
 }
 
-if ("content" in document.createElement("template")) {
-  
-  const timer = setInterval(function () {
-    addCard();
-    clearInterval(timer);
-  }, 5000);
-}
+var counter = 0;
+
+
+const timer = setInterval(function(){
+  counter += 1;
+  if(counter == 6){
+    window.location.reload();
+  } else {
+    addCard()
+  };
+}, 5000);
 
 
 
-const newsCards2 = news2.forEach(function templateCard2 (info2) {
-  function addCard2() {
-
-    var template =
-    document.getElementById("card-template").content.cloneNode(true);
-    template.querySelector(".card-id").innerText = `${info2.id}`;
-    template.querySelector(".card-title").innerText = `${info2.title}`;
-    template.querySelector(".card-text").innerText = `${info2.content}`;
-    document.querySelector("#card-list").prepend(template);
-
-  }
-  if ("content" in document.createElement("template")) {
-    setTimeout(addCard2, 10000);
-  }
-});
-
-setTimeout(function reloadCard() {
-  window.location.reload();
-}, 15000);
-
-// const timeWatch = document.querySelector('#checkSecs');
 
 
-// const nd = new Date();
-// let seconds = nd.getMilliseconds();
-// let interval = null;
-
-// function getMs () {
-//   seconds++;
-
-//   let secs = seconds;
-
-
-
-//   timeWatch.innerText = `${secs}`;
-
-// }
-
-// function start() {
-//   setInterval(getMs, 0);
-// }
-
-// start()
 
 
