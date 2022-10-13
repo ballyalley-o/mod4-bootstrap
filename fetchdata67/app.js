@@ -32,7 +32,8 @@ function fetchPosts(){
         } else { data.sort(function (a, b) {
           return a.index - b.index;
         });
-        output += `
+        //try and template this instead
+        output += ` 
        <div class="card card-body mb-3">
             <h4>${post.title}</h4>
              <p>${post.body}</p>
@@ -46,7 +47,7 @@ function fetchPosts(){
     })
 };
 
-
+//great addition!
 function addData(e) {
     e.preventDefault();
 
